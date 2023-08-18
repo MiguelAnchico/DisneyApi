@@ -1,4 +1,7 @@
-const { Server } = require('./Server/server');
+const { Server } = require('./server/server')
 
-let server = new Server();
-server.listen();
+// Creación de una nueva instancia del servidor
+const server = new Server()
+
+// Inicio del servidor
+server.listen()
