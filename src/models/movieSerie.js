@@ -29,7 +29,13 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.STRING, // URL de la imagen de la película/serie
       title: DataTypes.STRING, // Título de la película/serie
       release_date: DataTypes.DATE, // Fecha de lanzamiento de la película/serie
-      rating: DataTypes.INTEGER, // Calificación de la película/serie
+      rating: {
+        type: DataTypes.INTEGER,
+        validate: {
+          min: 1,
+          max: 5
+        }
+      }, // Calificación de la película/serie
       created_at: DataTypes.DATE,
       updated_at: DataTypes.DATE,
       deleted_at: DataTypes.DATE

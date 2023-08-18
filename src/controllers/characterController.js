@@ -10,12 +10,34 @@ class CharacterController {
    */
   async getAllCharacters(req, res) {
     try {
+      const { name, age, weight, movies } = req.query
+
+      // Definir las condiciones de búsqueda
+      const whereConditions = {}
+      if (name) whereConditions.name = name
+      if (age) whereConditions.age = age
+      if (weight) whereConditions.weight = weight
+
+      // Incluir películas/series si se especifica
+      const includeConditions = []
+      const movieSerieCondition = {
+        model: MovieSerie,
+        as: 'MoviesSeries'
+      }
+
+      // Incluir el id de la pelicula en caso de exista la condicion
+      if (movies) movieSerieCondition.where = { id: movies }
+
+      includeConditions.push(movieSerieCondition)
+
       const characters = await Character.findAll({
-        include: MovieSerie
+        where: whereConditions,
+        include: includeConditions
       })
+
       res.json(characters)
     } catch (error) {
-      res.status(500).json({ error: 'Error al obtener los personajes' })
+      res.status(500).json({ error })
     }
   }
 
