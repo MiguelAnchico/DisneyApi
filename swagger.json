@@ -1,0 +1,235 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API de Prueba Técnica",
+    "version": "1.0.0",
+    "description": "API para gestionar Personajes, Películas/Series, Géneros y Autenticación de Usuarios."
+  },
+  "tags": [
+    {
+      "name": "Characters",
+      "description": "Operaciones relacionadas con Personajes"
+    },
+    {
+      "name": "Authentication",
+      "description": "Operaciones relacionadas con la Autenticación de Usuarios"
+    },
+    {
+      "name": "MoviesSeries",
+      "description": "Operaciones relacionadas con Películas y Series"
+    }
+  ],
+  "paths": {
+    "/characters": {
+      "get": {
+        "tags": ["Characters"],
+        "summary": "Listado de Personajes",
+        "responses": {
+          "200": {
+            "description": "Lista de Personajes",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Characters"],
+        "summary": "Crear un Personaje",
+        "parameters": [
+          {
+            "name": "character",
+            "in": "body",
+            "description": "Datos del Personaje",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Personaje creado exitosamente"
+          }
+        }
+      }
+    },
+    "/characters/{id}": {
+      "put": {
+        "tags": ["Characters"],
+        "summary": "Editar un Personaje",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del Personaje",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "character",
+            "in": "body",
+            "description": "Datos actualizados del Personaje",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personaje actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Characters"],
+        "summary": "Eliminar un Personaje (soft delete)",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del Personaje",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personaje eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Autenticación de Usuarios",
+        "responses": {
+          "200": {
+            "description": "Usuario autenticado exitosamente"
+          }
+        }
+      }
+    },
+    "/movies": {
+      "get": {
+        "tags": ["MoviesSeries"],
+        "summary": "Listado de Películas/Series",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Buscar por título",
+            "type": "string"
+          },
+          {
+            "name": "genre",
+            "in": "query",
+            "description": "Filtrar por género",
+            "type": "integer"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Ordenar por fecha de creación (ASC o DESC)",
+            "type": "string",
+            "enum": ["ASC", "DESC"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de Películas/Series",
+            "schema": {
+              "$ref": "#/definitions/MovieSerie"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["MoviesSeries"],
+        "summary": "Crear una Película/Serie",
+        "parameters": [
+          {
+            "name": "movieSerie",
+            "in": "body",
+            "description": "Datos de la Película/Serie",
+            "schema": {
+              "$ref": "#/definitions/MovieSerie"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Película/Serie creada exitosamente"
+          }
+        }
+      }
+    },
+    "/movies/{id}": {
+      "put": {
+        "tags": ["MoviesSeries"],
+        "summary": "Editar una Película/Serie",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la Película/Serie",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "movieSerie",
+            "in": "body",
+            "description": "Datos actualizados de la Película/Serie",
+            "schema": {
+              "$ref": "#/definitions/MovieSerie"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Película/Serie actualizada exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["MoviesSeries"],
+        "summary": "Eliminar una Película/Serie (soft delete)",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la Película/Serie",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Película/Serie eliminada exitosamente"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Character": {
+      "type": "object",
+      "properties": {
+        "image": { "type": "string" },
+        "name": { "type": "string" },
+        "age": { "type": "integer" },
+        "weight": { "type": "number" },
+        "backstory": { "type": "string" }
+      }
+    },
+    "MovieSerie": {
+      "type": "object",
+      "properties": {
+        "image": { "type": "string" },
+        "title": { "type": "string" },
+        "release_date": { "type": "string", "format": "date" },
+        "rating": { "type": "integer", "minimum": 1, "maximum": 5 }
+      }
+    }
+  }
+}

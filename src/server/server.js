@@ -5,6 +5,12 @@ const http = require('http')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const sequelize = require('../config/db')
+require('../models')
+const characterRoutes = require('../routes/characterRoutes')
+const { MovieSerie, Genre } = require('../models')
+
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('../../swagger.json')
 
 class Server {
   constructor() {
@@ -22,12 +28,16 @@ class Server {
     this.server = http.createServer(this.app)
 
     // Definición de rutas
-    this.paths = {}
+    this.paths = {
+      characters: '/characters',
+      swagger: '/api-docs'
+    }
 
     // Inicialización de métodos
     this.connectToDB()
     this.addMiddlewares()
     this.setRoutes()
+    this.createDataTesting()
   }
 
   /**
@@ -58,7 +68,37 @@ class Server {
   /**
    * Método para configurar rutas
    */
-  setRoutes() {}
+  setRoutes() {
+    this.app.use(this.paths.characters, characterRoutes)
+    this.app.use(
+      this.paths.swagger,
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerDocument)
+    )
+  }
+
+  createDataTesting() {
+    MovieSerie.bulkCreate([
+      {
+        image: 'url1',
+        title: 'Película 1',
+        release_date: '2022-01-01',
+        rating: 5
+      },
+      {
+        image: 'url2',
+        title: 'Película 2',
+        release_date: '2022-02-01',
+        rating: 4
+      }
+    ])
+
+    Genre.bulkCreate([
+      { name: 'Acción' },
+      { name: 'Comedia' },
+      { name: 'Drama' }
+    ])
+  }
 
   /**
    * Método para iniciar el servidor
