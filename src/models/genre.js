@@ -1,5 +1,9 @@
 const { Model, DataTypes } = require('sequelize')
 
+/**
+ * Clase Genre
+ * Se definen los atributos y métodos para el modelo Genre
+ */
 class Genre extends Model {
   /**
    * Método para definir asociaciones entre modelos.

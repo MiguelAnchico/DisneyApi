@@ -32,7 +32,7 @@ MovieSerie.init(
   },
   {
     modelName: 'movies_series',
-    underscored: true, // Habilitamos el uso de guiones bajos en los nombres de los campos
+    underscored: true, // Habilitamos el uso de guiones bajos en los nombres de los campos CreatedAt, UpdatedAt y DeletedAt
     paranoid: true // Habilitamos el borrado suave con paranoid
   }
 )

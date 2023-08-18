@@ -27,6 +27,7 @@ Character.init(
     backstory: DataTypes.STRING // Historia del personaje
   },
   {
+    modelName: 'characters',
     underscored: true, // Habilitamos el uso de guiones bajos en los nombres de los campos CreatedAt, UpdatedAt y DeletedAt
     paranoid: true // Habilitamos el borrado soft con paranoid
   }
