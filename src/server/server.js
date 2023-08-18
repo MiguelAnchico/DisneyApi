@@ -5,6 +5,7 @@ const http = require('http')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const sequelize = require('../config/db')
+const characterRoutes = require('../routes/characterRoutes')
 
 class Server {
   constructor() {
@@ -22,7 +23,9 @@ class Server {
     this.server = http.createServer(this.app)
 
     // Definición de rutas
-    this.paths = {}
+    this.paths = {
+      characters: '/characters'
+    }
 
     // Inicialización de métodos
     this.connectToDB()
@@ -58,7 +61,9 @@ class Server {
   /**
    * Método para configurar rutas
    */
-  setRoutes() {}
+  setRoutes() {
+    this.app.use(this.paths.characters, characterRoutes)
+  }
 
   /**
    * Método para iniciar el servidor
