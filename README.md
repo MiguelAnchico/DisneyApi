@@ -17,34 +17,16 @@
     2. Modelo de Película o Serie: 30 minutos
     3. Modelo de Género: 30 minutos
 
-### Autenticación de Usuarios (2 horas)
-
-#### Creación de Middleware de Autenticación: 30 minutos
-
-#### Endpoint de Login: 1 hora
-
-    1. Creación de la Estructura de Autenticación: 20 minutos
-    2. Generación y Validación de Tokens JWT: 10 minutos
-    3. Pruebas con Jest: 30 minutos
-
-#### Endpoint de Registro: 1.75 hora
-
-    1. Creación de la Estructura de Registro: 20 minutos
-    2. Validación de Datos de Entrada: 15 minutos
-    3. Integración con la Base de Datos: 20 minutos
-    4. Integración con JWT: 10 minutos
-    5. Pruebas con Jest: 30 minutos
-
 ### Listado de Personajes (6 horas)
 
-#### Listar los Personajes: 30 minutos
+#### Crear ruta de Personajes: 30 minutos
 
-#### Operaciones CRUD de Personajes: 4 horas
+#### Operaciones CRUD de Personajes (Controller): 1.5 horas
 
-    1. Creación: 1 hora
-    2. Edición: 1 hora
-    3. Eliminación soft usando paranoid de Sequelize: 2 horas
-    4. Pruebas con Jest: 1 hora
+    1. Creación: 20 minutos
+    2. Edición: 20 minutos
+    3. Eliminación soft usando paranoid de Sequelize: 40 minutos
+    4. Pruebas con Jest: 10 minutos
 
 #### Detalle de Personaje: 30 minutos
 
@@ -70,4 +52,24 @@
 
     1. Implementación de filtros: 1 hora
     2. Pruebas con Jest: 30 minutos
+
+### Autenticación de Usuarios (2 horas)
+
+#### Creación de Middleware de Autenticación: 30 minutos
+
+#### Endpoint de Login: 1 hora
+
+    1. Creación de la Estructura de Autenticación: 20 minutos
+    2. Generación y Validación de Tokens JWT: 10 minutos
+    3. Pruebas con Jest: 30 minutos
+
+#### Endpoint de Registro: 1.75 hora
+
+    1. Creación de la Estructura de Registro: 20 minutos
+    2. Validación de Datos de Entrada: 15 minutos
+    3. Integración con la Base de Datos: 20 minutos
+    4. Integración con JWT: 10 minutos
+    5. Pruebas con Jest: 30 minutos
+
+
 
