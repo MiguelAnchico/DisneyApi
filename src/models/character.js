@@ -28,7 +28,7 @@ Character.init(
   },
   {
     underscored: true, // Habilitamos el uso de guiones bajos en los nombres de los campos CreatedAt, UpdatedAt y DeletedAt
-    paranoid: true // Habilitamos el borrado suave con paranoid
+    paranoid: true // Habilitamos el borrado soft con paranoid
   }
 )
 
