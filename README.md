@@ -1,4 +1,8 @@
+
 # DisneyApi
+
+## Modelo de la base de datos
+![Disney_Challenge](https://github.com/MiguelAnchico/DisneyApi/assets/98991880/bddfc6e1-7771-40c5-898a-3306b8b4fb19)
 
 ## Tareas a realizar
 
