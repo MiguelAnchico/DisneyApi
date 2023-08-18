@@ -1,9 +1,10 @@
+require('dotenv').config()
+
 const express = require('express')
 const http = require('http')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-
-require('dotenv').config()
+const sequelize = require('../config/db')
 
 class Server {
   constructor() {
@@ -17,7 +18,7 @@ class Server {
 
     // Crear aplicación Express
     this.app = express()
-    this.port = process.env.PORT
+    this.port = process.env.PORT || 4000
     this.server = http.createServer(this.app)
 
     // Definición de rutas
@@ -32,7 +33,17 @@ class Server {
   /**
    * Método para conectar a la base de datos
    */
-  async connectToDB() {}
+  async connectToDB() {
+    try {
+      // Intenta autenticarse con la base de datos
+      await sequelize.authenticate()
+      // Si la autenticación es exitosa, imprime un mensaje en la consola
+      console.log('Conexión a la base de datos establecida con éxito.')
+    } catch (error) {
+      // Si hay un error durante la autenticación, captura el error e imprime un mensaje en la consola
+      console.error('No se pudo conectar a la base de datos:', error)
+    }
+  }
 
   /**
    * Método para agregar middlewares

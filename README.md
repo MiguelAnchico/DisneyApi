@@ -5,7 +5,7 @@
 ### Creación del servidor (1 hora)
 
     1. Creación de la clase servidor: 40 minutos
-    2. Configuración del servidor: 20 minutos
+    2. Configuración de la conexión a la base de datos: 20 minutos
 
 ### Modelado de Base de Datos (1.5 horas)
 
