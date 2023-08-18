@@ -1,0 +1,38 @@
+{
+	"name": "disneyapi",
+	"version": "1.0.0",
+	"description": "Una API sobre el universo de Disney, de sus personajes y peliculas.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MiguelAnchico/DisneyApi.git"
+	},
+	"author": "Miguel Angel Anchico Valencia",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/MiguelAnchico/DisneyApi/issues"
+	},
+	"homepage": "https://github.com/MiguelAnchico/DisneyApi#readme",
+	"dependencies": {
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"express-validator": "^7.0.1",
+		"firebase": "^10.2.0",
+		"multer": "^1.4.5-lts.1"
+	},
+	"devDependencies": {
+		"eslint": "^8.47.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.28.0",
+		"eslint-plugin-n": "^16.0.1",
+		"eslint-plugin-promise": "^6.1.1",
+		"nodemon": "^3.0.1",
+		"prettier": "^3.0.2"
+	}
+}
