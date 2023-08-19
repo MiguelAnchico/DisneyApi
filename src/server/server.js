@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const sequelize = require('../config/db')
 require('../models')
 const characterRoutes = require('../routes/characterRoutes')
+const movieSerieRoutes = require('../routes/movieSerieRoutes')
 const { MovieSerie, Genre } = require('../models')
 
 const swaggerUi = require('swagger-ui-express')
@@ -30,6 +31,7 @@ class Server {
     // Definición de rutas
     this.paths = {
       characters: '/characters',
+      movieSerie: '/movies',
       swagger: '/api-docs'
     }
 
@@ -70,6 +72,7 @@ class Server {
    */
   setRoutes() {
     this.app.use(this.paths.characters, characterRoutes)
+    this.app.use(this.paths.movieSerie, movieSerieRoutes)
     this.app.use(
       this.paths.swagger,
       swaggerUi.serve,

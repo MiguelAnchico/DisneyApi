@@ -1,11 +1,12 @@
 const express = require('express')
-const characterValidations = require('./characterValidations')
+const characterValidations = require('./validations/characterValidations')
 const validate = require('../middlewares/validate')
 const CharacterController = require('../controllers/characterController')
 
 const router = express.Router()
 
 router.get('/', CharacterController.getAllCharacters)
+
 router.post(
   '/',
   characterValidations,
