@@ -8,7 +8,6 @@ const sequelize = require('../config/db')
 require('../models')
 const characterRoutes = require('../routes/characterRoutes')
 const movieSerieRoutes = require('../routes/movieSerieRoutes')
-const { MovieSerie, Genre } = require('../models')
 
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('../../swagger.json')
@@ -39,7 +38,6 @@ class Server {
     this.connectToDB()
     this.addMiddlewares()
     this.setRoutes()
-    this.createDataTesting()
   }
 
   /**
@@ -78,29 +76,6 @@ class Server {
       swaggerUi.serve,
       swaggerUi.setup(swaggerDocument)
     )
-  }
-
-  createDataTesting() {
-    MovieSerie.bulkCreate([
-      {
-        image: 'url1',
-        title: 'Película 1',
-        release_date: '2022-01-01',
-        rating: 5
-      },
-      {
-        image: 'url2',
-        title: 'Película 2',
-        release_date: '2022-02-01',
-        rating: 4
-      }
-    ])
-
-    Genre.bulkCreate([
-      { name: 'Acción' },
-      { name: 'Comedia' },
-      { name: 'Drama' }
-    ])
   }
 
   /**
