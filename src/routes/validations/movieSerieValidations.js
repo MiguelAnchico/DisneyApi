@@ -14,8 +14,15 @@ const movieSerieValidations = [
   check('release_date')
     .notEmpty()
     .withMessage('La fecha de lanzamiento es obligatoria')
-    .isDate()
-    .withMessage('La fecha de lanzamiento debe ser una fecha válida'),
+    .custom((value) => {
+      const datePattern = /^\d{4}-\d{2}-\d{2}$/
+      if (!datePattern.test(value)) {
+        throw new Error(
+          'La fecha de lanzamiento debe estar en el formato YYYY-MM-DD'
+        )
+      }
+      return true
+    }),
   check('rating')
     .notEmpty()
     .withMessage('La calificación es obligatoria')

@@ -1,11 +1,12 @@
 const express = require('express')
 const validate = require('../middlewares/validate')
 const MovieSerieController = require('../controllers/movieSerieController')
-const movieSerieValidations = require('./movieSerieValidations') // Importar las validaciones
+const movieSerieValidations = require('./validations/movieSerieValidations') // Importar las validaciones
 
 const router = express.Router()
 
 router.get('/', MovieSerieController.getAllMoviesSeries)
+router.get('/:id', MovieSerieController.getMovieSerieById)
 router.post(
   '/',
   movieSerieValidations,
